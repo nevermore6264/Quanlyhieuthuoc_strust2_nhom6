@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Aug 27, 2017 1:16:50 PM by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="QuanLyThuoc" dynamic-insert="false" dynamic-update="false" mutable="true" name="entities.InvoiceDetails" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="Invoice_details">
+        <id name="invId" type="string">
+            <column length="10" name="Inv_id"/>
+            <generator class="foreign">
+                <param name="property">invoices</param>
+            </generator>
+        </id>
+        
+        <many-to-one class="entities.Drug" embed-xml="true" fetch="select" insert="true" name="drug" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column length="10" name="Drug_id" not-null="true"/>
+        </many-to-one>
+        <one-to-one class="entities.Invoices" constrained="true" embed-xml="true" name="invoices"/>
+        <property generated="never" lazy="false" name="numberDetail" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="Number_detail"/>
+        </property>
+        <property generated="never" lazy="false" name="price" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="Price" scale="4"/>
+        </property>
+    </class>
+</hibernate-mapping>

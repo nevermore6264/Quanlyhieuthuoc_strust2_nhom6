@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 20, 2017 10:09:54 PM by Hibernate Tools 5.2.5.Final -->
+<hibernate-mapping>
+ <class catalog="QuanLyThuoc" name="entities.Invoices" table="Invoices">
+  <id name="invId" type="string">
+   <column length="10" name="INV_ID"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="entities.Account" fetch="select" name="account">
+   <column name="AccId" not-null="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="invDate" type="timestamp">
+   <column length="23" name="INV_DATE" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="customer" type="string">
+   <column name="CUSTOMER" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="invTotal" type="big_decimal">
+   <column name="INV_TOTAL" not-null="true" scale="4"/>
+  </property>
+  <property generated="never" lazy="false" name="invStatus" type="boolean">
+   <column name="INV_STATUS" not-null="true"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="invoiceDetailses"
+   sort="unsorted" table="Invoice_details">
+   <key>
+    <column length="10" name="INV_ID" not-null="true"/>
+   </key>
+   <one-to-many class="entities.InvoiceDetails"/>
+  </set>
+ </class>
+</hibernate-mapping>

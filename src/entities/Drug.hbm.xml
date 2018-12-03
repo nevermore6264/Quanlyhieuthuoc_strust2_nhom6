@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 24, 2017 3:30:49 PM by Hibernate Tools 5.2.3.Final -->
+<hibernate-mapping>
+ <class catalog="QuanLyThuoc" name="entities.Drug" table="Drug">
+  <id name="drugId" type="string">
+   <column length="10" name="DRUG_ID"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="drugName" type="string">
+   <column name="DRUG_NAME" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="drugContent" type="string">
+   <column length="50" name="DRUG_CONTENT" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="drugUnit" type="string">
+   <column name="DRUG_UNIT" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="drugIngredients" type="string">
+   <column length="250" name="DRUG_INGREDIENTS" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="guide" type="string">
+   <column name="GUIDE" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="timeExpired" type="timestamp">
+   <column length="23" name="TIME_EXPIRED" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="priceNr" type="big_decimal">
+   <column name="PRICE_NR" not-null="true" scale="4"/>
+  </property>
+  <property generated="never" lazy="false" name="priceHr" type="big_decimal">
+   <column name="PRICE_HR" not-null="true" scale="4"/>
+  </property>
+  <property generated="never" lazy="false" name="quantity" type="int">
+   <column name="QUANTITY" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="manufacturer" type="string">
+   <column length="50" name="MANUFACTURER" not-null="true"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="invoiceDetailses"
+   sort="unsorted" table="Invoice_details">
+   <key>
+    <column length="10" name="DRUG_ID" not-null="true"/>
+   </key>
+   <one-to-many class="entities.InvoiceDetails"/>
+  </set>
+ </class>
+</hibernate-mapping>

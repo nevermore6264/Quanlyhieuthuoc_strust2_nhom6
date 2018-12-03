@@ -1,0 +1,58 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+	<field name="drug.drugId">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Bạn phải nhập id</message>
+		</field-validator>
+	</field>
+	<field name="drug.drugName">
+		<field-validator type="requiredstring">
+			<message>bắt buộc nhập tên!</message>
+		</field-validator>
+	</field>
+	<field name="drug.drugIngredients">
+		<field-validator type="requiredstring">
+			<message>Vui lòng điền thành phần</message>
+		</field-validator>
+	</field>
+	<field name="drug.drugContent">
+		<field-validator type="requiredstring">
+			<message>Vui lòng điền hàm lượng</message>
+		</field-validator>
+	</field>
+	<field name="drug.timeExpired">
+		<field-validator type="date">
+			<message>Vui lòng nhập thời gian
+			</message>
+		</field-validator>
+	</field>
+
+	<field name="drug.priceNr">
+		<field-validator type="regex" short-circuit="true">
+			<param name="expression"><![CDATA[^[0-9]+$]]></param>
+			<message>Vui lòng nhập số</message>
+		</field-validator>
+	</field>
+	<field name="drug.priceHr">
+		<field-validator type="regex" short-circuit="true">
+			<param name="expression"><![CDATA[^[0-9]+$]]></param>
+			<message>Vui lòng nhập số</message>
+		</field-validator>
+	</field>
+	<field name="drug.quantity">
+		<field-validator type="regex" short-circuit="true">
+			<param name="expression"><![CDATA[^[0-9]+$]]></param>
+			<message>Vui lòng nhập số lượng bằng số!</message>
+		</field-validator>
+	</field>
+
+	<field name="drug.manufacturer">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Bạn phải nhập hãng</message>
+		</field-validator>
+	</field>
+</validators>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 15, 2017 6:40:30 PM by Hibernate Tools 5.2.3.Final -->
+<hibernate-mapping>
+ <class catalog="QuanLyThuoc" name="entities.Account" table="Account">
+  <id name="accId" type="int">
+   <column name="AccId"/>
+   <generator class="identity"/>
+  </id>
+  <property generated="never" lazy="false" name="username" type="string">
+   <column length="50" name="Username" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="password" type="string">
+   <column length="32" name="Password" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="roles" type="boolean">
+   <column name="Roles" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="name" type="string">
+   <column name="Name"/>
+  </property>
+  <property generated="never" lazy="false" name="birthday" type="timestamp">
+   <column length="23" name="Birthday"/>
+  </property>
+  <property generated="never" lazy="false" name="gender" type="java.lang.Boolean">
+   <column name="Gender"/>
+  </property>
+  <property generated="never" lazy="false" name="accStatus" type="boolean">
+   <column name="AccStatus" not-null="true"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="invoiceses"
+   sort="unsorted" table="Invoices">
+   <key>
+    <column name="AccId" not-null="true"/>
+   </key>
+   <one-to-many class="entities.Invoices"/>
+  </set>
+ </class>
+</hibernate-mapping>
